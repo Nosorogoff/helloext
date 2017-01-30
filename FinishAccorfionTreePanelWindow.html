@@ -1,0 +1,210 @@
+<html>
+<head>
+    <title>Hello Ext</title>
+ 
+    <link rel="stylesheet" type="text/css" href="../extjs/resources/css/ext-all.css">
+    <script type="text/javascript" src="../extjs/ext-all-dev.js"></script>
+    <!--<script type="text/javascript" src="app.js"></script>-->
+    <script>
+        Ext.onReady(function(){
+            var childPanel1 = Ext.create('Ext.panel.Panel', {
+                title: 'Panel 1',
+                html: 'Inside Panel 1'
+            });
+
+            var childPanel2 = Ext.create('Ext.panel.Panel', {
+                title: 'Panel 2',
+                id : 'bigPannel',
+                html: 'Inside Panel 2'
+            });
+
+            var childPanel3  = Ext.create('Ext.Panel', {
+                width: 500,
+                height: 360,
+                padding: 10,
+                layout:'border',
+
+                items: [{
+                    xtype: 'panel',
+                    title: 'Left panel',
+                    html: 'left panel',
+                    margin: '5 5 5 5',
+                    region: 'west',
+                    collapsible: true,
+                    split: true,
+                    width: 345
+                },{
+                    xtype: 'panel',
+                    title: 'Right panel',
+                    html: 'Right panel',
+                    region: 'east',
+                    layout:'accordion',
+                    collapsible: true,
+                    split: true,
+                    width: 120,
+                    items: [
+                        {
+                            xtype: 'panel',
+                            title: 'L_Tolstoy',
+                            html: 'made is L_Tolstoy '
+                        },
+                        {
+                            xtype: 'panel',
+                            title: 'F_Dostoevsky',
+                            html: 'made is Idiot '
+                        },
+                        {
+                            xtype: 'panel',
+                            title: 'I_Turgenev',
+                            html: 'made is My_My',
+                            layout:'border',
+                            width: 120,
+                            items: [{
+                                xtype: 'panel',
+                                title: 'Left',
+                                html: 'My',
+                                region: 'west',
+                                width: 60
+
+                            },
+                                {
+                                    xtype: 'panel',
+                                    title: 'Right',
+                                    html: 'My',
+                                    region: 'east',
+                                    width: 60,
+                                    layout:'accordion',
+                                    items: [
+                                        {
+                                            xtype: 'panel',
+                                            title: 'My',
+                                            html: 'My'
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            title: 'My',
+                                            html: 'My'
+                                        }],
+                                }
+                            ],
+                        }],
+                }] ,
+                renderTo: Ext.getBody()
+            });
+
+
+            var hello =  Ext.getCmp('bigPannel').add({
+                title: 'Inside',
+                height: 100,
+                html:'Hello I am a president'
+            });
+
+            var helloIns = Ext.getCmp('bigPannel').insert(0, {
+                title: 'panel insert',
+                height: 50,
+                html:'panel insert',
+            });
+
+
+
+            var Treebl = Ext.create('Ext.tree.Panel', {
+                title: 'Country',
+              //  width: 200,
+                height: 200,
+                rootVisible: true,
+                renderTo: Ext.getBody(),
+                root: {
+                    text: 'Country SNG',
+                    expanded: true,
+                    checked : true,
+                    children:
+                            [{
+                                text: "Rasha",
+                                children: [{
+                                    text: "Moscow",
+                                    leaf: true
+                                }, {
+                                    text: "CP",
+                                    leaf: true
+                                }, {
+                                    text: "Volgograd",
+                                    leaf: true
+                                }],
+                                leaf: false,
+                                expanded: true
+                            },
+                                {
+                                    text: "Uk",
+                                    leaf: false,
+                                    children:
+                                            [{
+                                                text: "Bandershtat",
+                                                leaf: true,
+                                                checked : true
+                                            },{
+                                                    text: "Poltava",
+                                                    leaf: true,
+                                                    checked : true
+                                            }],
+
+                                },
+                                {
+                                    text: "Bel"
+                                }]
+                }
+            });
+
+
+            Ext.create('Ext.container.Viewport', {
+                                items: [ childPanel1,
+                    childPanel2,
+                    childPanel3,
+                    hello,
+                    helloIns,Treebl
+                   ]
+            });
+
+            var window = Ext.create('Ext.window.Window', {
+                title: 'attachment',
+                width: 440,
+                height: 250,
+                collapsible: true,
+                closable: true,
+                tools: [
+                    {type: 'help',
+                        handler: function(event, toolEl, panel){
+                            alert('Help');
+                        }
+                    },
+                    {type: 'gear'},
+                    {type: 'search'}
+                ],
+                items:[{
+                    xtype: 'panel',
+                    title: 'panel',
+                    width: 400,
+                    height: 200,
+                    bodyPadding: 1,
+                    html: 'Hello masher fucker',
+                    style: 'margin: 10px',
+                    fbar: ['->', {
+                        xtype: 'button',
+                        text: 'Ok'
+                    },{
+                        xtype: 'button',
+                        text: 'Esc'
+                    }],
+
+
+
+                }]
+            });
+            window.show();
+
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

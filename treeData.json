@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "data": {
+    "FirstName": "Ivan",
+    "LastName": "Ivanov",
+    "Age": 29,
+    "Married": false
+  }
+}
